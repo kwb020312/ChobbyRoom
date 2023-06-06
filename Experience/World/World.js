@@ -8,8 +8,12 @@ export default class World {
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
     this.camera = this.experience.camera;
+    this.resources = this.experience.resources;
 
-    this.room = new Room();
+    this.resources.on("ready", () => {
+      this.room = new Room();
+      console.log("방 모델 불러오기 완료");
+    });
   }
 
   resize() {}
