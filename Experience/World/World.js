@@ -14,11 +14,12 @@ export default class World {
     this.resources.on("ready", () => {
       this.environment = new Environment();
       this.room = new Room();
-      console.log("방 모델 불러오기 완료");
     });
   }
 
   resize() {}
 
-  update() {}
+  update() {
+    if (this.room) this.room.update();
+  }
 }
