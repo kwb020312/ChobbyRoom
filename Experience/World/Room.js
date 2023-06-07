@@ -14,6 +14,7 @@ export default class Room {
 
   setModal() {
     this.scene.add(this.actualRoom);
+    this.actualRoom.scale.set(0.11, 0.11, 0.11);
   }
 
   resize() {}
