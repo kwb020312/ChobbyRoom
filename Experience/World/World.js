@@ -1,4 +1,5 @@
 import Experience from "../Experience";
+import Environment from "./Environment";
 import Room from "./Room";
 
 export default class World {
@@ -11,6 +12,7 @@ export default class World {
     this.resources = this.experience.resources;
 
     this.resources.on("ready", () => {
+      this.environment = new Environment();
       this.room = new Room();
       console.log("방 모델 불러오기 완료");
     });
