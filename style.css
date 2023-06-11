@@ -1,8 +1,23 @@
+@font-face {
+  font-family: "Score";
+  src: url("/fonts/SCDream4.otf");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Score";
+  color: var(--text-black);
 }
+
+:root {
+  --text-black: #333332;
+  --primary-color: #faf4e5;
+  --primary-pink: #e5a1aa;
+}
+
+/* 3D Room */
 
 .experience {
   position: fixed;
@@ -13,4 +28,155 @@
 .experience-canvas {
   width: 100%;
   height: 100%;
+}
+
+/* 자기소개 */
+
+.page {
+  z-index: 99999999999;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-wrapper {
+  position: relative;
+}
+
+/* 주제별 */
+.section-margin {
+  height: 3000px;
+  width: 100%;
+}
+
+.section {
+  width: 50%;
+  padding: 1000px 4%;
+  margin: 0;
+  background-color: var(--primary-color);
+}
+
+.left {
+  margin-right: auto;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.section-intro-wrapper {
+  position: relative;
+  padding: 20% 5%;
+  border-bottom: 2px solid var(--primary-pink);
+  padding-bottom: 480px;
+}
+
+.section-detail-wrapper {
+  position: relative;
+  padding: 20% 5%;
+}
+
+.section-heading {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.8;
+  margin-top: 64px;
+}
+
+.section-text {
+  line-height: 2;
+  margin-top: 18px;
+  font-size: 16px;
+}
+
+/* 내용 꾸미기 */
+
+.section-title {
+  position: relative;
+  color: var(--primary-pink);
+}
+
+.section-title-text {
+  display: block;
+  font-size: 40px;
+  font-weight: 500;
+  transform-origin: left;
+  transform: skewY(25deg);
+  z-index: 5;
+  text-transform: uppercase;
+}
+
+.styleOne,
+.styleTwo,
+.styleThree {
+  position: absolute;
+  display: block;
+  width: 100%;
+  max-width: 278px;
+  height: 60px;
+  border: 1px solid var(--primary-pink);
+  transform-origin: left;
+  transform: skewY(-25deg);
+}
+
+.styleOne {
+  top: 0px;
+}
+
+.styleTwo {
+  top: 80px;
+}
+
+.styleThree {
+  top: 80px;
+  transform: skewY(25deg);
+  background-color: var(--primary-pink);
+}
+
+.section-number {
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  color: var(--primary-pink);
+  font-size: 24px;
+}
+
+/* 메인 컨텐츠 */
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-wrapper {
+  position: relative;
+  height: 100%;
+  width: calc(100%-160px);
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.hero-main {
+  position: absolute;
+  bottom: 168px;
+  left: 0;
+}
+
+.hero-second {
+  position: absolute;
+  top: calc(50%-120px);
+  right: 30px;
+}
+
+.hero-main-title {
+  font-size: 64px;
+}
+
+.hero-main-description {
+  font-size: 18px;
+}
+
+.hero-second-subheading {
+  font-size: 18px;
+  text-transform: uppercase;
 }
