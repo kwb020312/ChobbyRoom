@@ -11,6 +11,7 @@
   "devDependencies": {
     "events": "^3.3.0",
     "gsap": "^3.12.1",
+    "lil-gui": "^0.18.2",
     "vite": "^4.3.9"
   },
   "dependencies": {
