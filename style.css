@@ -136,27 +136,64 @@ svg {
 }
 
 .section {
+  position: relative;
   width: 50%;
   padding: 1000px 4%;
   margin: 0;
   background-color: var(--color-background);
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  overflow: hidden;
 }
 
 .left {
   margin-right: auto;
+  border-top-right-radius: 700px 700px;
+  border-bottom-right-radius: 0px 0px;
 }
 
 .right {
   margin-left: auto;
+  border-top-left-radius: 700px 700px;
+  border-bottom-left-radius: 0px 0px;
 }
+
+/* 진행 바 */
+.progress-wrapper {
+  height: 0;
+  width: 12px;
+  z-index: 9999;
+}
+
+.progress-bar-wrapper-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-bar-wrapper-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.progress-bar {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-pink);
+  transform-origin: top center;
+  transform: scaleY(1);
+}
+
+/* 각 섹션 */
 
 .section-intro-wrapper {
   position: relative;
   padding: 20% 5%;
   border-bottom: 2px solid var(--color-pink);
-  padding-bottom: 480px;
+  padding-bottom: 400px;
+}
+
+.section-intro-wrapper:nth-child(3) {
+  border-bottom: 2px solid var(--color-green);
 }
 
 .section-detail-wrapper {
@@ -275,4 +312,30 @@ svg {
   font-size: 18px;
   text-transform: uppercase;
   color: var(--color-text);
+}
+
+/* 다른 색상을 덮어씀 */
+
+.blue-text {
+  color: var(--color-blue);
+}
+
+.blue-border {
+  border-color: var(--color-blue);
+}
+
+.blue-background {
+  background-color: var(--color-blue);
+}
+
+.green-text {
+  color: var(--color-green);
+}
+
+.green-border {
+  border-color: var(--color-green);
+}
+
+.green-background {
+  background-color: var(--color-green);
 }
