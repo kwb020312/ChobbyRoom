@@ -339,3 +339,11 @@ svg {
 .green-background {
   background-color: var(--color-green);
 }
+
+/* 해상도에 따른 미디어 쿼리 */
+
+@media (max-width: 968px) {
+  .section {
+    width: 100%;
+  }
+}

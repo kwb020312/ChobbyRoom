@@ -13,25 +13,10 @@ export default class Controls {
     this.camera = this.experience.camera;
     this.room = this.experience.world.room.actualRoom;
     GSAP.registerPlugin(ScrollTrigger);
-    this.setPath();
+    this.setScrollTrigger();
   }
 
-  setPath() {
-    this.timeline = new GSAP.timeline();
-    this.timeline.to(this.room.position, {
-      x: () => {
-        return this.sizes.width * 0.00094;
-      },
-      scrollTrigger: {
-        trigger: ".first-move",
-        markers: true,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.6,
-        invalidateOnRefresh: true,
-      },
-    });
-  }
+  setScrollTrigger() {}
 
   resize() {}
 
