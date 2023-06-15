@@ -1,7 +1,7 @@
 import * as THREE from "three";
-import Experience from "../Experience";
+import Experience from "../Experience.js";
 import GSAP from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 import ASScroll from "@ashthornton/asscroll";
 
 export default class Controls {
@@ -18,11 +18,21 @@ export default class Controls {
         this.rectLight = child;
       }
     });
+    this.circleFirst = this.experience.world.floor.circleFirst;
+    this.circleSecond = this.experience.world.floor.circleSecond;
+    this.circleThird = this.experience.world.floor.circleThird;
 
     GSAP.registerPlugin(ScrollTrigger);
 
-    this.setSmoothScroll();
+    document.querySelector(".page").style.overflow = "visible";
 
+    if (
+      !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      this.setSmoothScroll();
+    }
     this.setScrollTrigger();
   }
 
@@ -72,32 +82,42 @@ export default class Controls {
   }
 
   setSmoothScroll() {
-    this.asscroll = this.setupasscroll;
+    this.asscroll = this.setupASScroll();
   }
 
   setScrollTrigger() {
     ScrollTrigger.matchMedia({
-      // 데스크톱
+      //Desktop
       "(min-width: 969px)": () => {
+        // console.log("fired desktop");
+
         this.room.scale.set(0.11, 0.11, 0.11);
         this.rectLight.width = 0.5;
         this.rectLight.height = 0.7;
-
-        // 첫번째 섹션
+        this.camera.orthographicCamera.position.set(0, 6.5, 10);
+        this.room.position.set(0, 0, 0);
+        // First section -----------------------------------------
         this.firstMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".first-move",
             start: "top top",
             end: "bottom bottom",
             scrub: 0.6,
+            // markers: true,
             invalidateOnRefresh: true,
           },
         });
-        this.firstMoveTimeline.to(this.room.position, {
-          x: () => this.sizes.width * 0.0014,
-        });
+        this.firstMoveTimeline.fromTo(
+          this.room.position,
+          { x: 0, y: 0, z: 0 },
+          {
+            x: () => {
+              return this.sizes.width * 0.0014;
+            },
+          }
+        );
 
-        // 두번째 섹션
+        // Second section -----------------------------------------
         this.secondMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".second-move",
@@ -110,8 +130,12 @@ export default class Controls {
           .to(
             this.room.position,
             {
-              x: () => 1,
-              z: () => this.sizes.height * 0.0032,
+              x: () => {
+                return 1;
+              },
+              z: () => {
+                return this.sizes.height * 0.0032;
+              },
             },
             "same"
           )
@@ -128,51 +152,53 @@ export default class Controls {
             this.rectLight,
             {
               width: 0.5 * 4,
-
               height: 0.7 * 4,
             },
             "same"
           );
 
-        // 세번째 섹션
+        // Third section -----------------------------------------
         this.thirdMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".third-move",
             start: "top top",
             end: "bottom bottom",
-            markers: true,
             scrub: 0.6,
             invalidateOnRefresh: true,
           },
         }).to(this.camera.orthographicCamera.position, {
-          y: -2,
+          y: 1.5,
           x: -4.1,
         });
       },
 
-      // 모바일
+      // Mobile
       "(max-width: 968px)": () => {
-        // 리셋
+        // console.log("fired mobile");
+
+        // Resets
         this.room.scale.set(0.07, 0.07, 0.07);
         this.room.position.set(0, 0, 0);
         this.rectLight.width = 0.3;
-        this.rectLight.height = 0.3;
+        this.rectLight.height = 0.4;
+        this.camera.orthographicCamera.position.set(0, 6.5, 10);
 
-        // 첫번째 섹션
+        // First section -----------------------------------------
         this.firstMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".first-move",
             start: "top top",
             end: "bottom bottom",
             scrub: 0.6,
-            invalidateOnRefresh: true,
+            // invalidateOnRefresh: true,
           },
         }).to(this.room.scale, {
           x: 0.1,
           y: 0.1,
           z: 0.1,
         });
-        // 두번째 섹션
+
+        // Second section -----------------------------------------
         this.secondMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".second-move",
@@ -206,13 +232,13 @@ export default class Controls {
             },
             "same"
           );
-        // 세번째 섹션
+
+        // Third section -----------------------------------------
         this.thirdMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".third-move",
             start: "top top",
             end: "bottom bottom",
-            markers: true,
             scrub: 0.6,
             invalidateOnRefresh: true,
           },
@@ -221,7 +247,7 @@ export default class Controls {
         });
       },
 
-      // 모든 기기
+      // all
       all: () => {
         this.sections = document.querySelectorAll(".section");
         this.sections.forEach((section) => {
@@ -249,20 +275,20 @@ export default class Controls {
             });
           } else {
             GSAP.to(section, {
-              borderBottomLeftRadius: 700,
-              scrollTrigger: {
-                trigger: section,
-                start: "bottom bottom",
-                end: "bottom top",
-                scrub: 0.6,
-              },
-            });
-            GSAP.to(section, {
               borderTopRightRadius: 10,
               scrollTrigger: {
                 trigger: section,
                 start: "top bottom",
                 end: "top top",
+                scrub: 0.6,
+              },
+            });
+            GSAP.to(section, {
+              borderBottomRightRadius: 700,
+              scrollTrigger: {
+                trigger: section,
+                start: "bottom bottom",
+                end: "bottom top",
                 scrub: 0.6,
               },
             });
@@ -280,7 +306,62 @@ export default class Controls {
           });
         });
 
-        // 나머지 플랫폼
+        // All animations
+        // First section -----------------------------------------
+        this.firstCircle = new GSAP.timeline({
+          scrollTrigger: {
+            trigger: ".first-move",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.6,
+          },
+        }).to(this.circleFirst.scale, {
+          x: 3,
+          y: 3,
+          z: 3,
+        });
+
+        // Second section -----------------------------------------
+        this.secondCircle = new GSAP.timeline({
+          scrollTrigger: {
+            trigger: ".second-move",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.6,
+          },
+        })
+          .to(
+            this.circleSecond.scale,
+            {
+              x: 3,
+              y: 3,
+              z: 3,
+            },
+            "same"
+          )
+          .to(
+            this.room.position,
+            {
+              y: 0.7,
+            },
+            "same"
+          );
+
+        // Third section -----------------------------------------
+        this.thirdCircle = new GSAP.timeline({
+          scrollTrigger: {
+            trigger: ".third-move",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.6,
+          },
+        }).to(this.circleThird.scale, {
+          x: 3,
+          y: 3,
+          z: 3,
+        });
+
+        // Mini Platform Animations
         this.secondPartTimeline = new GSAP.timeline({
           scrollTrigger: {
             trigger: ".third-move",
@@ -296,7 +377,6 @@ export default class Controls {
               duration: 0.3,
             });
           }
-
           if (child.name === "Mailbox") {
             this.second = GSAP.to(child.scale, {
               x: 1,
@@ -305,25 +385,24 @@ export default class Controls {
               duration: 0.3,
             });
           }
-
           if (child.name === "Lamp") {
             this.third = GSAP.to(child.scale, {
               x: 1,
               y: 1,
               z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
-
           if (child.name === "FloorFirst") {
             this.fourth = GSAP.to(child.scale, {
               x: 1,
               y: 1,
               z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
-
           if (child.name === "FloorSecond") {
             this.fifth = GSAP.to(child.scale, {
               x: 1,
@@ -332,39 +411,39 @@ export default class Controls {
               duration: 0.3,
             });
           }
-
           if (child.name === "FloorThird") {
             this.sixth = GSAP.to(child.scale, {
               x: 1,
               y: 1,
               z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
-
           if (child.name === "Dirt") {
             this.seventh = GSAP.to(child.scale, {
               x: 1,
               y: 1,
               z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
-
           if (child.name === "Flower1") {
             this.eighth = GSAP.to(child.scale, {
               x: 1,
               y: 1,
               z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
-
           if (child.name === "Flower2") {
-            this.nineth = GSAP.to(child.scale, {
+            this.ninth = GSAP.to(child.scale, {
               x: 1,
               y: 1,
               z: 1,
+              ease: "back.out(2)",
               duration: 0.3,
             });
           }
@@ -377,11 +456,10 @@ export default class Controls {
         this.secondPartTimeline.add(this.sixth, "-=0.2");
         this.secondPartTimeline.add(this.seventh, "-=0.2");
         this.secondPartTimeline.add(this.eighth);
-        this.secondPartTimeline.add(this.nineth, "-=0.1");
+        this.secondPartTimeline.add(this.ninth, "-=0.1");
       },
     });
   }
-
   resize() {}
 
   update() {}
