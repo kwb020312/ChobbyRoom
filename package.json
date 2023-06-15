@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@ashthornton/asscroll": "^2.0.11",
     "events": "^3.3.0",
     "gsap": "^3.12.1",
     "lil-gui": "^0.18.2",
