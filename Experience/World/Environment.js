@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import Experience from "../Experience";
+import Experience from "../Experience.js";
 import GSAP from "gsap";
 import GUI from "lil-gui";
 
@@ -7,7 +7,6 @@ export default class Environment {
   constructor() {
     this.experience = new Experience();
     this.scene = this.experience.scene;
-    this.resources = this.experience.resources;
 
     // this.gui = new GUI({ container: document.querySelector(".hero-main") });
     this.obj = {
@@ -23,10 +22,11 @@ export default class Environment {
     this.gui.addColor(this.obj, "colorObj").onChange(() => {
       this.sunLight.color.copy(this.obj.colorObj);
       this.ambientLight.color.copy(this.obj.colorObj);
+      console.log(this.obj.colorObj);
     });
     this.gui.add(this.obj, "intensity", 0, 10).onChange(() => {
       this.sunLight.intensity = this.obj.intensity;
-      this.ambientLight.intensity = this.obj.intensity;
+      this.sunLight.ambientLight = this.obj.intensity;
     });
   }
 
@@ -38,6 +38,7 @@ export default class Environment {
     this.sunLight.shadow.normalBias = 0.05;
     // const helper = new THREE.CameraHelper(this.sunLight.shadow.camera);
     // this.scene.add(helper);
+
     this.sunLight.position.set(-1.5, 7, 3);
     this.scene.add(this.sunLight);
 
@@ -46,6 +47,7 @@ export default class Environment {
   }
 
   switchTheme(theme) {
+    // console.log(this.sunLight);
     if (theme === "dark") {
       GSAP.to(this.sunLight.color, {
         r: 0.17254901960784313,

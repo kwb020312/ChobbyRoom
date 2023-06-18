@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import Experience from "./Experience";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import Experience from "./Experience.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export default class Camera {
   constructor() {
@@ -21,7 +21,6 @@ export default class Camera {
       0.1,
       1000
     );
-
     this.scene.add(this.perspectiveCamera);
     this.perspectiveCamera.position.x = 29;
     this.perspectiveCamera.position.y = 14;
@@ -38,8 +37,9 @@ export default class Camera {
       50
     );
 
-    this.orthographicCamera.position.y = 3.5;
-    this.orthographicCamera.position.z = 5;
+    // 6.5
+    this.orthographicCamera.position.y = 5.65;
+    this.orthographicCamera.position.z = 10;
     this.orthographicCamera.rotation.x = -Math.PI / 6;
 
     this.scene.add(this.orthographicCamera);
@@ -53,7 +53,7 @@ export default class Camera {
     // const gridHelper = new THREE.GridHelper(size, divisions);
     // this.scene.add(gridHelper);
 
-    // const axesHelper = new THREE.AxesHelper(5);
+    // const axesHelper = new THREE.AxesHelper(10);
     // this.scene.add(axesHelper);
   }
 
@@ -64,11 +64,11 @@ export default class Camera {
   }
 
   resize() {
-    // 화면 크기 재조정에 따른 투시 카메라 적용
+    // Updating Perspective Camera on Resize
     this.perspectiveCamera.aspect = this.sizes.aspect;
     this.perspectiveCamera.updateProjectionMatrix();
 
-    // 화면 크기 재조정에 따른 직교 카메라 적용
+    // Updating Orthographic Camera on Resize
     this.orthographicCamera.left =
       (-this.sizes.aspect * this.sizes.frustrum) / 2;
     this.orthographicCamera.right =
@@ -79,9 +79,12 @@ export default class Camera {
   }
 
   update() {
+    // console.log(this.perspectiveCamera.position);
     this.controls.update();
+
     // this.helper.matrixWorldNeedsUpdate = true;
+    // this.helper.update();
     // this.helper.position.copy(this.orthographicCamera.position);
-    // this.helper.rotation.copy(this.orthographicCamera.position);
+    // this.helper.rotation.copy(this.orthographicCamera.rotation);
   }
 }

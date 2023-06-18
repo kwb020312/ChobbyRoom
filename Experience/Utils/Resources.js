@@ -1,9 +1,9 @@
 import * as THREE from "three";
 
-import EventEmitter from "events";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import Experience from "../Experience";
+import { EventEmitter } from "events";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import Experience from "../Experience.js";
 
 export default class Resources extends EventEmitter {
   constructor(assets) {
@@ -28,7 +28,6 @@ export default class Resources extends EventEmitter {
     this.loaders.dracoLoader.setDecoderPath("/draco/");
     this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
   }
-
   startLoading() {
     for (const asset of this.assets) {
       if (asset.type === "glbModel") {
@@ -50,9 +49,9 @@ export default class Resources extends EventEmitter {
         this.videoTexture[asset.name] = new THREE.VideoTexture(
           this.video[asset.name]
         );
-        this.videoTexture[asset.name].filpY = true;
+        // this.videoTexture[asset.name].flipY = false;
         this.videoTexture[asset.name].minFilter = THREE.NearestFilter;
-        this.videoTexture[asset.name].mageFilter = THREE.NearestFilter;
+        this.videoTexture[asset.name].magFilter = THREE.NearestFilter;
         this.videoTexture[asset.name].generateMipmaps = false;
         this.videoTexture[asset.name].encoding = THREE.sRGBEncoding;
 

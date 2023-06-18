@@ -2,14 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="icon" type="image/svg+xml" href="vite.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, target-densityDpi=device-dpi, minimal-ui"
+    />
+    <title>Chobby's Room</title>
   </head>
   <body class="light-theme">
     <div class="experience">
       <canvas class="experience-canvas"></canvas>
     </div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="preloader-wrapper">
+        <div class="loading">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="page" asscroll-container>
       <div class="toggle-bar">
         <div class="sun-wrapper">
@@ -24,15 +39,10 @@
           <div class="toggle-circle"></div>
         </button>
         <div class="moon-wrapper">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24"
-            viewBox="0 -960 960 960"
-            width="24"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
             <path
               fill="currentColor"
-              d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"
+              d="M12 21Q8.25 21 5.625 18.375Q3 15.75 3 12Q3 8.25 5.625 5.625Q8.25 3 12 3Q12.35 3 12.688 3.025Q13.025 3.05 13.35 3.1Q12.325 3.825 11.713 4.987Q11.1 6.15 11.1 7.5Q11.1 9.75 12.675 11.325Q14.25 12.9 16.5 12.9Q17.875 12.9 19.025 12.287Q20.175 11.675 20.9 10.65Q20.95 10.975 20.975 11.312Q21 11.65 21 12Q21 15.75 18.375 18.375Q15.75 21 12 21ZM12 19Q14.2 19 15.95 17.788Q17.7 16.575 18.5 14.625Q18 14.75 17.5 14.825Q17 14.9 16.5 14.9Q13.425 14.9 11.262 12.738Q9.1 10.575 9.1 7.5Q9.1 7 9.175 6.5Q9.25 6 9.375 5.5Q7.425 6.3 6.213 8.05Q5 9.8 5 12Q5 14.9 7.05 16.95Q9.1 19 12 19ZM11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Z"
             />
           </svg>
         </div>
@@ -41,15 +51,27 @@
       <div class="page-wrapper" asscroll>
         <section class="hero">
           <div class="hero-wrapper">
+            <!-- Intro Stuff -->
+            <div class="intro-text">✨방문해주셔서 감사합니다!</div>
+            <div class="arrow-svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+                <path
+                  fill="currentColor"
+                  d="M12 14.95q-.2 0-.375-.063-.175-.062-.325-.212L6.675 10.05q-.275-.275-.262-.688.012-.412.287-.687.275-.275.7-.275.425 0 .7.275l3.9 3.9 3.925-3.925q.275-.275.688-.263.412.013.687.288.275.275.275.7 0 .425-.275.7l-4.6 4.6q-.15.15-.325.212-.175.063-.375.063Z"
+                />
+              </svg>
+            </div>
+
             <div class="hero-main">
-              <h1 class="hero-main-title">Chobby's Room</h1>
+              <h1 class="hero-main-title">Chobby</h1>
               <p class="hero-main-description">
-                웹 프론트엔드 개발자 | AI 소프트웨어과 학생
+                웹 프론트엔드 개발자 | AI 소프트웨어 학과
               </p>
             </div>
+
             <div class="hero-second">
-              <h1 class="hero-second-subheading">Chobby's Room</h1>
-              <p class="hero-second-subheading">포트폴리오</p>
+              <p class="hero-second-subheading first-sub">Chobby's</p>
+              <p class="hero-second-subheading second-sub">Room</p>
             </div>
           </div>
         </section>
@@ -63,7 +85,7 @@
 
           <div class="section-intro-wrapper">
             <h1 class="section-title">
-              <span class="section-title-text">프로필</span>
+              <span class="section-title-text">About Me</span>
               <div class="section-title-decoration styleOne"></div>
               <div class="section-title-decoration styleTwo"></div>
               <div class="section-title-decoration styleThree"></div>
@@ -72,26 +94,14 @@
           </div>
 
           <div class="section-detail-wrapper">
-            <h3 class="section-heading">Lorem ipsum</h3>
+            <!-- <h3 class="section-heading">Hello!</h3> -->
             <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
+              안녕하세요! 👋! 웹 프론트엔드 개발에 흥미를 갖고, ThreeJS를 활용한
+              사이드 프로젝트 및 AI에 흥미를 갖고 있는 Chobby 입니다!
             </p>
-            <h3 class="section-heading">Lorem ipsum</h3>
             <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
-            </p>
-            <h3 class="section-heading">Lorem ipsum</h3>
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
+              자기개발을 중요시하며, 틈틈히 시간을 내어 공부하는 노력형
+              인간입니다✌️. 다시 한번 방문해주셔서 감사합니다!
             </p>
           </div>
         </section>
@@ -105,7 +115,7 @@
 
           <div class="section-intro-wrapper blue-text blue-border">
             <h1 class="section-title blue-text blue-border">
-              <span class="section-title-text blue-text">내 프로젝트</span>
+              <span class="section-title-text blue-text">My Work</span>
               <div class="section-title-decoration styleOne blue-border"></div>
               <div class="section-title-decoration styleTwo blue-border"></div>
               <div
@@ -116,26 +126,20 @@
           </div>
 
           <div class="section-detail-wrapper">
-            <h3 class="section-heading">Lorem ipsum</h3>
+            <h3 class="section-heading">사이드 프로젝트 목록</h3>
             <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
+              <a href="https://3-d-fortfolio-introduce.vercel.app/"
+                >사이드 프로젝트 목록</a
+              >
+              포트폴리오에서 확인할 수 있으며, 최신화된 많은
+              <a href="https://github.com/kwb020312">Git Repository</a>는 해당
+              링크에서 확인해보실 수 있습니다.
             </p>
-            <h3 class="section-heading">Lorem ipsum</h3>
+            <h3 class="section-heading">블로그</h3>
             <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
-            </p>
-            <h3 class="section-heading">Lorem ipsum</h3>
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
+              📖알게된 내용, 읽었던 책의 독서 후 감상문 외에 알고리즘 풀이와,
+              골머리 앓았던 문제의 해결방법등을 블로그에 정리하여 복습 및 다른
+              사람들의 문제 해결에 조금이나마 도움이 될만한 내용을 작성합니다.
             </p>
           </div>
         </section>
@@ -149,7 +153,7 @@
 
           <div class="section-intro-wrapper green-text green-border">
             <h1 class="section-title green-text green-border">
-              <span class="section-title-text green-text">연락처</span>
+              <span class="section-title-text green-text">Contact Me</span>
               <div class="section-title-decoration styleOne green-border"></div>
               <div class="section-title-decoration styleTwo green-border"></div>
               <div
@@ -160,27 +164,12 @@
           </div>
 
           <div class="section-detail-wrapper">
-            <h3 class="section-heading">Lorem ipsum</h3>
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
-            </p>
-            <h3 class="section-heading">Lorem ipsum</h3>
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
-            </p>
-            <h3 class="section-heading">Lorem ipsum</h3>
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-              laudantium accusantium delectus laboriosam debitis cupiditate in
-              assumenda beatae? Soluta fugiat corrupti hic quae quibusdam quidem
-              maiores vitae! Dolor, optio placeat?
-            </p>
+            <h3 class="section-heading">연락처</h3>
+            <p class="section-text">kwb020312@naver.com</p>
+            <h3 class="section-heading">Instagram</h3>
+            <p class="section-text">chob_0312</p>
+            문의 사항이나 해당 사이트에 관심있으신 분들은 언제든 연락 주시면
+            감사하겠습니다!
           </div>
         </section>
       </div>
