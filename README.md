@@ -1,7 +1,7 @@
 # ChobbyRoom
 🤩 @maisyleigh, Boko님의 룸 인테리어 소스를 참고하여 3D 모델링된 방 구현하기
 
-[방 염탐하러가기!](https://vercel.com/kwb020312/chobby-room)
+[방 염탐하러가기!](https://chobby-room.vercel.app/)
 
 ### 로딩 화면
 ![image](https://github.com/kwb020312/ChobbyRoom/assets/46777310/af5098d2-6101-42eb-a9a3-9ae77d114790)
