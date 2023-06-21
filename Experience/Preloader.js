@@ -33,7 +33,6 @@ export default class Preloader extends EventEmitter {
 
     this.room = this.experience.world.room.actualRoom;
     this.roomChildren = this.experience.world.room.roomChildren;
-    console.log(this.roomChildren);
   }
 
   firstIntro() {
@@ -78,7 +77,7 @@ export default class Preloader extends EventEmitter {
       }
       this.timeline
         .to(".intro-text .animatedis", {
-          yPercent: 0,
+          yPercent: -1,
           stagger: 0.05,
           ease: "back.out(1.7)",
         })
@@ -345,7 +344,6 @@ export default class Preloader extends EventEmitter {
     let currentY = e.touches[0].clientY;
     let difference = this.initalY - currentY;
     if (difference > 0) {
-      console.log("swipped up");
       this.removeEventListeners();
       this.playSecondIntro();
     }
